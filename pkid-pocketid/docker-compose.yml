@@ -1,41 +1,45 @@
-# Configuration for pocket-id setup
 version: "3.7"
-# Service definitions for the pocket-id application
+
 services:
+  # Umbrel reverse-proxy integration
   app_proxy:
     environment:
-      APP_HOST: big-bear-umbrel-pocketid_big-bear-pocketid_1
-      APP_PORT: " 1411"
-  # Service configuration for the pocket-id application
-  big-bear-pocketid:
-    image: ghcr.io/pocket-id/pocket-id:v1.15 # Docker image to use for pocket-id
-    restart: unless-stopped # Restart policy: Restart unless manually stopped
-    cpu_shares: 90
-    command: []
+      APP_HOST: pocket-id
+      APP_PORT: "1411"
+
+  # Pocket-ID application
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:v1
+    restart: unless-stopped
+    hostname: pocket-id
+
+    ports:
+      - "1411:1411" # Optional; safe to keep for direct access
+
+    environment:
+      APP_URL: http://localhost:1411
+      TRUST_PROXY: "false" # Set to true if Umbrel reverse proxy terminates TLS
+      MAXMIND_LICENSE_KEY:
+      PUID: "1000"
+      PGID: "1000"
+
+    volumes:
+      - pocketid_data:/app/data
+
     deploy:
       resources:
         limits:
           memory: 2048M
-    environment:
-      - APP_URL=http://localhost:1411 # Application URL for pocket-id, should be set to your domain name e.g https://pocketid.example.com if using a reverse proxy
-      - TRUST_PROXY=false # Whether to trust proxy headers, set to true if behind a reverse proxy
-      - MAXMIND_LICENSE_KEY= # MaxMind license key for geolocation, optional
-      - PUID=1000 # User ID for file permissions
-      - PGID=1000 # Group ID for file permissions
-    hostname: big-bear-pocketid
+
     labels:
-      icon: https://pocket-id.org/img/logo.png # Icon URL
-    volumes:
-      - type: bind
-        source: pocketid_data
-        target: /app/data # Volume for persistent data
-    devices: []
-    cap_add: []
-    privileged: false
-    # Optional healthcheck
+      icon: https://pocket-id.org/img/logo.png
+
     healthcheck:
-      test: "curl -f http://localhost:1411/healthz" # Health check command
+      test: ["CMD", "/app/pocket-id", "healthcheck"]
       interval: 1m30s
       timeout: 5s
       retries: 2
       start_period: 10s
+
+volumes:
+  pocketid_data:
