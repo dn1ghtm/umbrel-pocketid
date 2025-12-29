@@ -5,8 +5,8 @@ services:
   app_proxy:
     environment:
       # Must match <app-id>_<docker-service-name>_1
-      APP_HOST: pkid-pocket-id_1
-      APP_PORT: 1411
+      APP_HOST: pkid-pocketid_server_1
+      APP_PORT: 8979
 
   # Pocket-ID application
   server:
