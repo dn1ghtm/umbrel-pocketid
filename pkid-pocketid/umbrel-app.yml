@@ -1,26 +1,13 @@
 manifestVersion: 1
 id: pkid-pocketid
-category: BigBearCasaOS
+category: Authentication
 name: Pocket ID
-version: "v1.15"
+version: "1.15"
 tagline: Passkey-based OIDC authentication
 description: >-
-  Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services. 
-releaseNotes: >-
-  This version includes various improvements and bug fixes.
+  Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys.
 developer: pocket-id
-website: https://hub.docker.com/r/pocket-id/pocket-id
-dependencies: []
-repo: https://github.com/bigbeartechworld/big-bear-universal-apps
-support: https://github.com/bigbeartechworld/big-bear-universal-apps/issues
-port: 10143
-gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
-path: ""
-defaultUsername: ""
-defaultPassword: ""
+website: https://pocket-id.org
+port: 1411
 icon: https://pocket-id.org/img/logo.png
-submitter: BigBearTechWorld
-submission: https://github.com/bigbeartechworld/big-bear-universal-apps
+dependencies: []
