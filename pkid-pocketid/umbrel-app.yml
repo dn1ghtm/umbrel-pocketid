@@ -2,7 +2,7 @@ manifestVersion: 1
 id: pkid-pocketid
 name: Pocket ID
 category: Services          # Standard Umbrel category
-version: "2.1"
+version: "54.43"
 tagline: Passkey-based OIDC authentication
 description: >-
   Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.
@@ -12,7 +12,7 @@ developer: pocket-id
 website: https://pocket-id.org
 repo: https://github.com/bigbeartechworld/big-bear-universal-apps
 support: https://github.com/bigbeartechworld/big-bear-universal-apps/issues
-port: 1441                 # Must match the container port
+port: 1411                 # Must match the container port
 path: ""                   # Ensures dashboard routing works
 defaultUsername: ""
 defaultPassword: ""
