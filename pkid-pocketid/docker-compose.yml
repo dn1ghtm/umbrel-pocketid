@@ -15,9 +15,8 @@ services:
     hostname: pocket-id
     user: "1000:1000"
     init: true
-
     ports:
-      - "1411:1411" # Optional; safe to keep for direct access
+      - 1411:1411
 
     environment:
       APP_URL: http://localhost:1411
