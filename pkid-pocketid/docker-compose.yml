@@ -1,22 +1,12 @@
-version: "3.7"
-
 services:
-  # Umbrel reverse-proxy integration
-  app_proxy:
-    environment:
-      # Must match <app-id>_<docker-service-name>_1
-      APP_HOST: pkid-pocketid_server_1
-      APP_PORT: 1411
-
-  # Pocket-ID application
-  server:
+  pocket-id:
     image: ghcr.io/pocket-id/pocket-id:v1
     restart: unless-stopped
-    hostname: pocket-id
-    user: "1000:1000"
-    init: true
     ports:
       - 1411:1411
+    volumes:
+      - pocketid_data:/app/data
+
 
     environment:
       APP_URL: http://localhost:1411
@@ -24,15 +14,11 @@ services:
       MAXMIND_LICENSE_KEY:
       PUID: "1000"
       PGID: "1000"
-
-    volumes:
-      - pocketid_data:/app/data
-
     labels:
       icon: https://pocket-id.org/img/logo.png
-
+    # Optional healthcheck
     healthcheck:
-      test: ["CMD", "/app/pocket-id", "healthcheck"]
+      test: [ "CMD", "/app/pocket-id", "healthcheck" ]
       interval: 1m30s
       timeout: 5s
       retries: 2
