@@ -1,7 +1,7 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "pocketid",
+    "id": "pkid-pocketid",
     "name": "Pocket ID",
     "description": "Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.",
     "tagline": "Passkey-based OIDC authentication",
