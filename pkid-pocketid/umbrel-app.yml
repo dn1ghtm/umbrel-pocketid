@@ -12,7 +12,7 @@ developer: pocket-id
 website: https://pocket-id.org
 repo: https://github.com/bigbeartechworld/big-bear-universal-apps
 support: https://github.com/bigbeartechworld/big-bear-universal-apps/issues
-port: 8979                 # Must match the container port
+port: 1441                 # Must match the container port
 path: ""                   # Ensures dashboard routing works
 defaultUsername: ""
 defaultPassword: ""
