@@ -2,7 +2,7 @@ manifestVersion: 1
 id: pkid-pocketid
 name: Pocket ID
 category: Services          # Standard Umbrel category
-version: "2"
+version: "2.1"
 tagline: Passkey-based OIDC authentication
 description: >-
   Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.
