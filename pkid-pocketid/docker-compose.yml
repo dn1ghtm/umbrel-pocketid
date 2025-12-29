@@ -4,14 +4,17 @@ services:
   # Umbrel reverse-proxy integration
   app_proxy:
     environment:
-      APP_HOST: pocket-id
-      APP_PORT: "1411"
+      # Must match <app-id>_<docker-service-name>_1
+      APP_HOST: pkid-pocketid_server_1
+      APP_PORT: 1411
 
   # Pocket-ID application
-  pocket-id:
+  server:
     image: ghcr.io/pocket-id/pocket-id:v1
     restart: unless-stopped
     hostname: pocket-id
+    user: "1000:1000"
+    init: true
 
     ports:
       - "1411:1411" # Optional; safe to keep for direct access
@@ -25,11 +28,6 @@ services:
 
     volumes:
       - pocketid_data:/app/data
-
-    deploy:
-      resources:
-        limits:
-          memory: 2048M
 
     labels:
       icon: https://pocket-id.org/img/logo.png

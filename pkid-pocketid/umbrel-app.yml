@@ -13,7 +13,7 @@ website: https://pocket-id.org
 repo: https://github.com/bigbeartechworld/big-bear-universal-apps
 support: https://github.com/bigbeartechworld/big-bear-universal-apps/issues
 port: 1411                 # Must match the container port
-path: "/"                   # Ensures dashboard routing works
+path: ""                   # Ensures dashboard routing works
 defaultUsername: ""
 defaultPassword: ""
 icon: https://pocket-id.org/img/logo.png
